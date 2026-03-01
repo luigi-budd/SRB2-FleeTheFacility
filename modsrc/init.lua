@@ -13,17 +13,40 @@ G_AddGametype({
 })
 
 local filetree = {
-	/*
-	[k] = {
-		dir = "",
-		files = {...}
+	[1] = {
+		dir = "Lib",
+		files = {
+			"math.lua",
+			"shallowCopy.lua",
+		}
+	},
+	[2] = {
+		dir = "Funcs",
+		files = {
+			"isGamemode.lua",
+		}
+	},
+	
+	[3] = {
+		dir = "Game",
+		files = {
+			"",
+		}
+	},
+	
+	[4] = {
+		dir = "Player",
+		files = {
+			"main.lua",
+			"initPlayer.lua",
+		}
 	}
-	*/
 }
 
 for k, info in ipairs(filetree)
-	for file in ipairs(info.files)
-		dofile(info.dir .. file)
+	for _, file in ipairs(info.files)
+		if file == "" then continue end
+		dofile(info.dir .."/".. file)
 	end
 end
 
